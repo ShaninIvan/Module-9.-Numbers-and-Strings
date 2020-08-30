@@ -1,0 +1,21 @@
+.calc-row {
+    height: 100vh;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.input-window {
+    text-align: end;
+    font-size: x-large;
+    margin-bottom: 10px;
+}
+
+.action{
+    text-align: end;
+    color: gray;
+    min-height: 30px;
+}
+
+#btn_backspace{
+    margin-left: 3px;
+    padding-left: 1px;
+}
