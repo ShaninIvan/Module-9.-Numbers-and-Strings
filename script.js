@@ -4,13 +4,21 @@ let log = null;
 
 const inputWindow = document.getElementById('inputWindow');
 
-//Приведение к вещественному типу
-function format() {
-    inputWindow.value = parseFloat(inputWindow.value);
+//Обновление текущих операнда и операции
+function updateAction(OperandA, SelectOperation){
+    if (operation === null) {
+        lastOperand = parseFloat(OperandA);
+        operation = SelectOperation;
+        inputWindow.value = "0";
+    }
+    else{
+        operation = SelectOperation;
+    }
+    showAction(lastOperand, operation)
 }
 
 //Отображение текущих операнда и операции
-function action(lastOperand, operation) {
+function showAction(lastOperand, operation) {
     document.querySelector('.action').innerText = lastOperand + operation;
 }
 
@@ -24,7 +32,7 @@ document.getElementById('btn_clr').addEventListener('click', function () {
     lastOperand = 0;
     operation = null;
     inputWindow.value = '0';
-    action("", "");
+    showAction("", "");
     document.querySelector(".journal ul").innerHTML = "";
 })
 
@@ -41,7 +49,7 @@ document.querySelector('.card-body').addEventListener('click', function (event) 
     let targ = event.target;
     if (targ.classList.contains('number')) {
         inputWindow.value += targ.innerText;
-        format();
+        inputWindow.value = parseFloat(inputWindow.value);
     }
 })
 
@@ -72,42 +80,22 @@ document.querySelector("#btn_sqrt").addEventListener('click', function () {
 
 //Сложение
 document.querySelector("#btn_plus").addEventListener('click', function () {
-    if (operation === null) {
-        lastOperand = parseFloat(inputWindow.value);
-        operation = '+';
-        inputWindow.value = 0;
-        action(lastOperand, operation);
-    }
+    updateAction(inputWindow.value, "+");
 })
 
 //Сложение
 document.querySelector("#btn_minus").addEventListener('click', function () {
-    if (operation === null) {
-        lastOperand = parseFloat(inputWindow.value);
-        operation = '-';
-        inputWindow.value = 0;
-        action(lastOperand, operation);
-    }
+    updateAction(inputWindow.value, "-");
 })
 
 //Умножение
 document.querySelector("#btn_multiply").addEventListener('click', function () {
-    if (operation === null) {
-        lastOperand = parseFloat(inputWindow.value);
-        operation = '*';
-        inputWindow.value = 0;
-        action(lastOperand, operation);
-    }
+    updateAction(inputWindow.value, "*");
 })
 
 //Деление
 document.querySelector("#btn_divide").addEventListener('click', function () {
-    if (operation === null) {
-        lastOperand = parseFloat(inputWindow.value);
-        operation = '/';
-        inputWindow.value = 0;
-        action(lastOperand, operation);
-    }
+    updateAction(inputWindow.value, "/");
 })
 
 
@@ -140,7 +128,7 @@ document.querySelector("#btn_calc").addEventListener('click', function () {
         updateJournal(val, result)
         lastOperand = 0;
         operation = null;
-        action("", "");
+        showAction("", "");
     }
 })
 
