@@ -5,13 +5,13 @@ let log = null;
 const inputWindow = document.getElementById('inputWindow');
 
 //Обновление текущих операнда и операции
-function updateAction(OperandA, SelectOperation){
+function updateAction(OperandA, SelectOperation) {
     if (operation === null) {
         lastOperand = parseFloat(OperandA);
         operation = SelectOperation;
         inputWindow.value = "0";
     }
-    else{
+    else {
         operation = SelectOperation;
     }
     showAction(lastOperand, operation)
@@ -23,8 +23,8 @@ function showAction(lastOperand, operation) {
 }
 
 //Обновление журнала
-function updateJournal(operandB, result){
-    document.querySelector(".journal ul").innerHTML += "<li>" + lastOperand + operation + operandB + "=" + result +"</li>" +"<hr>";
+function updateJournal(operandB, result) {
+    document.querySelector(".journal ul").innerHTML += "<li>" + lastOperand + operation + operandB + "=" + result + "</li>" + "<hr>";
 }
 
 //Очистка
@@ -73,7 +73,7 @@ document.querySelector("#btn_sqrt").addEventListener('click', function () {
     }
     else {
         inputWindow.value = Math.sqrt(val);
-        document.querySelector(".journal ul").innerHTML += "<li>" + "sqrt(" + val + ")=" + inputWindow.value +"</li>"+"<hr>";
+        document.querySelector(".journal ul").innerHTML += "<li>" + "sqrt(" + val + ")=" + inputWindow.value + "</li>" + "<hr>";
     }
 
 })
