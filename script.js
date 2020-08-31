@@ -1,6 +1,5 @@
 let lastOperand = 0;
 let operation = null;
-let log = null;
 
 const inputWindow = document.getElementById('inputWindow');
 
