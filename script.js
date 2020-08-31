@@ -26,13 +26,18 @@ function updateJournal(operandB, result) {
     document.querySelector(".journal ul").innerHTML += "<li>" + lastOperand + operation + operandB + "=" + result + "</li>" + "<hr>";
 }
 
-//Очистка
+//Очистить все
 document.getElementById('btn_clr').addEventListener('click', function () {
     lastOperand = 0;
     operation = null;
     inputWindow.value = '0';
     showAction("", "");
     document.querySelector(".journal ul").innerHTML = "";
+})
+
+//Очистить поле ввода
+document.querySelector('#btn_cl_input').addEventListener('click', function () {
+    inputWindow.value = '0';
 })
 
 //BACKSPACE
